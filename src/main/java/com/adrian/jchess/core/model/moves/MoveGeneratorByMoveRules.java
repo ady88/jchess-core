@@ -257,7 +257,7 @@ public class MoveGeneratorByMoveRules {
 	}
 
 	private boolean allowMove(ChessPosition position, BoardCoordinates initial, MoveRule moveRule) {
-		boolean allowMove;
+		boolean allowMove = true;
 		if (!(position.getPiece(initial) instanceof ChessPiece piece)) {
 			return false;
 		}
@@ -271,11 +271,22 @@ public class MoveGeneratorByMoveRules {
 						&& !RankNotation.SEVENTH.equals(initial.getRank()))) {
 			allowMove = false;
 		} else if (ChessPieceNotation.PAWN.equals(piece.getNotation())
-				&& (MoveRule.TOP_VERTICAL_O.equals(moveRule) || MoveRule.BOTTOM_VERTICAL_O.equals(moveRule))
+				&& (MoveRule.TOP_VERTICAL_O.equals(moveRule) || MoveRule.BOTTOM_VERTICAL_O.equals(moveRule)
+						|| MoveRule.BLACK_PAWN_FIRST_MOVE.equals(moveRule)
+						|| MoveRule.WHITE_PAWN_FIRST_MOVE.equals(moveRule))
 				&& position.getPiece(BoardCoordinates.of(
 						initial.getFile().getFileIntNotation() + moveRule.getFileMove(),
 						initial.getRank().getRankIntNotation() + moveRule.getRankMove())) instanceof ChessPiece) {
 			allowMove = false;
+		} else if (ChessPieceNotation.PAWN.equals(piece.getNotation())
+				&& (MoveRule.BLACK_PAWN_FIRST_MOVE.equals(moveRule)
+						|| MoveRule.WHITE_PAWN_FIRST_MOVE.equals(moveRule))) {
+			int rankMove = moveRule.getRankMove() < 0 ? moveRule.getRankMove() + 1 : moveRule.getRankMove() - 1;
+			if (position.getPiece(BoardCoordinates.of(
+					initial.getFile().getFileIntNotation(),
+					initial.getRank().getRankIntNotation() + rankMove)) instanceof ChessPiece) {
+				allowMove = false;
+			}
 		} else if (ChessPieceNotation.PAWN.equals(piece.getNotation())
 				&& (MoveRule.BLACK_PAWN_LEFT_ENPASSANT.equals(moveRule)
 						|| MoveRule.BLACK_PAWN_RIGHT_ENPASSANT.equals(moveRule)

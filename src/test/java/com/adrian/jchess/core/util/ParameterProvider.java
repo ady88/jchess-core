@@ -79,13 +79,16 @@ public class ParameterProvider {
 	static Stream<Arguments> availableMovesForPositionAndCoordinates() {
 		return Stream
 				.of(Arguments.of("2r5/RP4b1/6pk/4p2p/1B2N2P/P2K1nP1/8/8 w - - 7 48", BoardCoordinates.of("b7"),
-						"[[b7b8r], [b7b8n], [b7b8b], [b7b8q], [b7c8r], [b7c8n], [b7c8b], [b7c8q]]"));
+						"[[b7b8r], [b7b8n], [b7b8b], [b7b8q], [b7c8r], [b7c8n], [b7c8b], [b7c8q]]"),
+						Arguments.of("2k4r/ppp2pp1/n2p2q1/3P4/2P1r3/B4K2/P2Q1P1P/5R2 b - - 3 29", BoardCoordinates.of("a7"),"[]"));
 	}
 
 	static Stream<Arguments> availableMovesForPosition() {
 		return Stream
 				.of(Arguments.of("r7/ppkn3Q/2p5/8/1q6/3B4/2PKRrPP/7R w - - 2 23",
-						"[[c2c3], [d2c1], [d2e3], [d2d1]]"));
+						"[[c2c3], [d2c1], [d2e3], [d2d1]]"),
+						Arguments.of("2k4r/ppp2pp1/n2p2q1/3P4/2P1r3/B4K2/P2Q1P1P/5R2 b - - 3 29",
+								"[[e4e5], [e4e6], [e4e7], [e4e8], [e4e3], [e4e2], [e4e1], [e4d4], [e4c4], [e4f4], [e4g4], [e4h4], [a6c5], [a6b8], [a6b4], [g6f5], [g6h7], [g6h5], [g6g5], [g6g4], [g6g3], [g6g2], [g6g1], [g6f6], [g6e6], [g6h6], [b7b6], [b7b5], [c7c6], [c7c5], [f7f6], [f7f5], [c8d7], [c8b8], [c8d8], [h8h7], [h8h6], [h8h5], [h8h4], [h8h3], [h8h2], [h8g8], [h8f8], [h8e8], [h8d8]]"));
 	}
 
 }
