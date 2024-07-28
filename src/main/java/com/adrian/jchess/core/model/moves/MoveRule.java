@@ -135,7 +135,7 @@ public enum MoveRule {
 	private final MoveRuleType type;
 	private final List<AbstractChessPiece> piecesApplicable;
 
-	private MoveRule(int rankMove, int fileMove, final MoveRuleType type, final List<AbstractChessPiece> pieces) {
+	MoveRule(int rankMove, int fileMove, final MoveRuleType type, final List<AbstractChessPiece> pieces) {
 		this.rankMove = rankMove;
 		this.fileMove = fileMove;
 		this.type = type;

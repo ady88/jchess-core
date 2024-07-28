@@ -1,51 +1,61 @@
 package com.adrian.jchess.core.model.moves;
 
-import java.util.Map;
-import java.util.stream.Stream;
-
 import com.adrian.jchess.core.model.ChessPieceNotation;
 import com.adrian.jchess.core.model.coordinates.BoardCoordinates;
 
+import java.util.List;
+import java.util.Map;
+
 public class ChessMove {
-	private BoardCoordinates initialLocation;
-	private BoardCoordinates finalLocation;
+    private BoardCoordinates initialLocation;
+    private BoardCoordinates finalLocation;
 
-	private Map.Entry<MoveMetadata, Stream<Object>> moveMetadata;
+    private final int initial50MoveCounter;
 
-	public BoardCoordinates getInitialLocation() {
-		return initialLocation;
-	}
+    private Map.Entry<MoveMetadata, List<Object>> moveMetadata;
 
-	public void setInitialLocation(BoardCoordinates initialLocation) {
-		this.initialLocation = initialLocation;
-	}
+    public ChessMove(int initial50MoveCounter) {
+        this.initial50MoveCounter = initial50MoveCounter;
+    }
 
-	public BoardCoordinates getFinalLocation() {
-		return finalLocation;
-	}
+    public int getInitial50MoveCounter() {
+        return initial50MoveCounter;
+    }
 
-	public void setFinalLocation(BoardCoordinates finalLocation) {
-		this.finalLocation = finalLocation;
-	}
+    public BoardCoordinates getInitialLocation() {
+        return initialLocation;
+    }
 
-	public Map.Entry<MoveMetadata, Stream<Object>> getMoveMetadata() {
-		return moveMetadata;
-	}
+    public void setInitialLocation(BoardCoordinates initialLocation) {
+        this.initialLocation = initialLocation;
+    }
 
-	public void setMoveMetadata(Map.Entry<MoveMetadata, Stream<Object>> moveMetadata) {
-		this.moveMetadata = moveMetadata;
-	}
+    public BoardCoordinates getFinalLocation() {
+        return finalLocation;
+    }
 
-	@Override
-	public String toString() {
-		if (moveMetadata == null) {
-			return "[" + initialLocation + finalLocation + "]";
-		}
-		String promotionNotation = MoveMetadata.PROMOTION.equals(moveMetadata.getKey())
-				|| MoveMetadata.CAPTURE_PROMOTION.equals(moveMetadata.getKey())
-						?  ((ChessPieceNotation) (moveMetadata.getValue().findFirst().get())).getFenNotationBlack()
-						: "";
+    public void setFinalLocation(BoardCoordinates finalLocation) {
+        this.finalLocation = finalLocation;
+    }
 
-		return "[" + initialLocation + finalLocation + promotionNotation + "]";
-	}
+    public Map.Entry<MoveMetadata, List<Object>> getMoveMetadata() {
+        return moveMetadata;
+    }
+
+    public void setMoveMetadata(Map.Entry<MoveMetadata, List<Object>> moveMetadata) {
+        this.moveMetadata = moveMetadata;
+    }
+
+    @Override
+    public String toString() {
+        if (moveMetadata == null) {
+            return "[" + initialLocation + finalLocation + "]";
+        }
+        String promotionNotation = MoveMetadata.PROMOTION.equals(moveMetadata.getKey())
+                || MoveMetadata.CAPTURE_PROMOTION.equals(moveMetadata.getKey())
+                ? ((ChessPieceNotation) (moveMetadata.getValue().getFirst())).getFenNotationBlack()
+                : "";
+
+        return "[" + initialLocation + finalLocation + promotionNotation + "]";
+    }
 }

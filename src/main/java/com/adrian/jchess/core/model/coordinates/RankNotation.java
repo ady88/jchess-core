@@ -8,7 +8,7 @@ public enum RankNotation {
 	private final int rankIntReverseNotation;
 	private final String rankTextNotation;
 
-	private RankNotation(final int rankIntNotation, final int rankIntReverseNotation, final String rankTextNotation) {
+	RankNotation(final int rankIntNotation, final int rankIntReverseNotation, final String rankTextNotation) {
 		this.rankIntNotation = rankIntNotation;
 		this.rankTextNotation = rankTextNotation;
 		this.rankIntReverseNotation = rankIntReverseNotation;

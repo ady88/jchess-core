@@ -6,6 +6,8 @@
 
 *.settings/
 
+target/*
+
 .project
 
 # Log file

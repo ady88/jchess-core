@@ -8,7 +8,7 @@ public enum ChessPieceNotation {
 	private final String fenNotationBlack;
 	private final String fenNotationWhite;
 
-	private ChessPieceNotation(String pgnNotation, String fenNotationBlack, String fenNotationWhite) {
+	ChessPieceNotation(String pgnNotation, String fenNotationBlack, String fenNotationWhite) {
 		this.pgnNotation = pgnNotation;
 		this.fenNotationBlack = fenNotationBlack;
 		this.fenNotationWhite = fenNotationWhite;

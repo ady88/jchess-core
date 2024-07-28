@@ -7,7 +7,7 @@ public enum FileNotation {
 	private final int fileIntReverseNotation;
 	private final String filePgnNotation;
 
-	private FileNotation(int fileIntNotation, int fileIntReverseNotation, String filePgnNotation) {
+	FileNotation(int fileIntNotation, int fileIntReverseNotation, String filePgnNotation) {
 		this.fileIntNotation = fileIntNotation;
 		this.filePgnNotation = filePgnNotation;
 		this.fileIntReverseNotation = fileIntReverseNotation;
