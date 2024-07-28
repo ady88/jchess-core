@@ -171,9 +171,6 @@ public class MoveGeneratorByMoveRules {
                 moveMetadata = new AbstractMap.SimpleImmutableEntry<>(MoveMetadata.CAPTURE_PROMOTION,
                         capturedPieceAndPromotion);
 
-                System.out.println("ADRIAN captured promotion piece !!!!");
-                System.out.println(capturedPieceAndPromotion);
-
                 ChessMove capturePromotionMove = new ChessMove(position.getFiftyMoveCounter());
                 capturePromotionMove.setInitialLocation(initial);
                 capturePromotionMove.setFinalLocation(end);
